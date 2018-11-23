@@ -146,6 +146,8 @@ public class SurveyServiceTest {
         assertEquals(existing.getDescription(), surveyCompare.getDescription());
     }
     
+    
+    /*Teste de falha de adição de formulário quando houver formulário no repositório*/
     @Test(expected = ComponentNotFoundException.class)
     public void shouldFailWhenGetSurveyForUseWithNoRepo() {
         Long EXISTING_ID = 1L;
