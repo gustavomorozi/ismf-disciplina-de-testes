@@ -172,7 +172,27 @@ public class SurveyServiceTest {
     
     
     
-    
+       
+    /*Teste de falha de adição de formulário quando houver formulário no repositório*/
+    @Test(expected = ComponentNotFoundException.class)
+    public void shouldFailWhenGetSurveyForUseWithNoRepo() {
+        Long EXISTING_ID = 1L;
+         Survey existing = new Survey();
+        existing.setPrefix("Prefix");
+        existing.setTitle("Title");
+        existing.setDescription("Description");
+        existing.setId(EXISTING_ID);
+        
+        Survey surveyCompare = new Survey();
+        surveyCompare.setPrefix("Prefix");
+        surveyCompare.setTitle("Title");
+        surveyCompare.setDescription("Description");
+        existing.setId(EXISTING_ID);
+         when(surveyRepository.exists(EXISTING_ID)).thenReturn(true);
+        when(surveyRepository.getOne(EXISTING_ID)).thenReturn(existing);
+        
+        surveyService.getSurveyForUse(EXISTING_ID);
+    }
     
     
 }
