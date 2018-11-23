@@ -94,7 +94,27 @@ public class SurveyServiceTest {
     
     
     
-    
+     /* Teste de adição de formulário*/
+    @Test
+    public void shouldAddSurvey() {
+        
+        Survey survey = new Survey();
+        survey.setPrefix("Prefix");
+        survey.setTitle("Title");
+        survey.setDescription("Description");
+        
+        Survey surveyCompare = new Survey();
+        surveyCompare.setPrefix("Prefix");
+        surveyCompare.setTitle("Title");
+        surveyCompare.setDescription("Description");
+        
+        when(surveyRepository.saveAndFlush(survey)).thenReturn(survey);
+        
+        surveyService.addSurvey(survey);
+         assertEquals(survey.getTitle(), surveyCompare.getTitle());
+        assertEquals(survey.getPrefix(), surveyCompare.getPrefix());
+        assertEquals(survey.getDescription(), surveyCompare.getDescription());
+     }
     
     
     
