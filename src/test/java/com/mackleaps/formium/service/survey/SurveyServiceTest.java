@@ -51,5 +51,57 @@ public class SurveyServiceTest {
     }
 
  
+    
+    
+    
+    
+    
+    
+    
+      @Test
+    
+    /*Teste de retorno de formulário por editavel  */
+    public void shouldReturnSurveyWithEditedValuesIfEverythingWentOkWhenEditing () {
+
+        Long EXISTING_ID = 1L;
+
+        Survey existing = new Survey();
+        existing.setPrefix("Prefix");
+        existing.setTitle("Title");
+        existing.setDescription("Description");
+        existing.setId(EXISTING_ID);
+
+        when(surveyRepository.exists(EXISTING_ID)).thenReturn(true);
+        when(surveyRepository.saveAndFlush(existing)).thenReturn(existing);
+
+        Survey editedSurvey = surveyService.editSurvey(existing);
+
+        assertEquals(existing.getTitle(), editedSurvey.getTitle());
+        assertEquals(existing.getPrefix(), editedSurvey.getPrefix());
+        assertEquals(existing.getDescription(), editedSurvey.getDescription());
+    }
+
+    @Test(expected = ComponentNotFoundException.class)
+    public void shouldThrowExceptionWhenTryingToDeleteANonExistingComponent () {
+
+        Long NOT_EXISTING_SURVEY_ID = 5L;
+        when(surveyRepository.exists(NOT_EXISTING_SURVEY_ID)).thenThrow(new ComponentNotFoundException());
+
+        surveyService.deleteSurvey(NOT_EXISTING_SURVEY_ID);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
