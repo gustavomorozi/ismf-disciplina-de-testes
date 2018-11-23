@@ -123,7 +123,7 @@ public class SurveyServiceTest {
         assertEquals(existing.getDescription(), editedSurvey.getDescription());
     }
     
-    
+    /*Teste de obtenção do formulário*/
     @Test
     public void shouldGetASurvey() {
         Long EXISTING_ID = 1L;
