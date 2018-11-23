@@ -167,7 +167,7 @@ public class SurveyServiceTest {
         
         surveyService.getSurveyForUse(EXISTING_ID);
     }
-    
+    /*Teste de obtenção de formulário*/
     @Test
     public void shouldGetSurveyForUse() {
         Long EXISTING_ID = 1L;
