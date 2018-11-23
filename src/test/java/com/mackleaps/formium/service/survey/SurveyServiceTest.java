@@ -119,6 +119,25 @@ public class SurveyServiceTest {
     
     
     
+        
+    /*Teste de edição de formulário*/
+    @Test
+    public void shouldEditSurvey() {
+        Long EXISTING_ID = 1L;
+         Survey existing = new Survey();
+        existing.setPrefix("Prefix");
+        existing.setTitle("Title");
+        existing.setDescription("Description");
+        existing.setId(EXISTING_ID);
+         when(surveyRepository.exists(EXISTING_ID)).thenReturn(true);
+        when(surveyRepository.saveAndFlush(existing)).thenReturn(existing);
+        
+        surveyService.editSurvey(existing);
+         Survey editedSurvey = surveyService.editSurvey(existing);
+         assertEquals(existing.getTitle(), editedSurvey.getTitle());
+        assertEquals(existing.getPrefix(), editedSurvey.getPrefix());
+        assertEquals(existing.getDescription(), editedSurvey.getDescription());
+    }
     
     
     
