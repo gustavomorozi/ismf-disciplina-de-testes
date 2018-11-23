@@ -140,6 +140,39 @@ public class SurveyServiceTest {
     }
     
     
+ 
+    
+    
+    
+    
+    
+        /*Teste de obtenção do formulário*/
+    @Test
+    public void shouldGetASurvey() {
+        Long EXISTING_ID = 1L;
+         Survey existing = new Survey();
+        existing.setPrefix("Prefix");
+        existing.setTitle("Title");
+        existing.setDescription("Description");
+        
+        Survey surveyCompare = new Survey();
+        surveyCompare.setPrefix("Prefix");
+        surveyCompare.setTitle("Title");
+        surveyCompare.setDescription("Description");
+         when(surveyRepository.exists(EXISTING_ID)).thenReturn(true);
+        when(surveyRepository.getOne(EXISTING_ID)).thenReturn(existing);
+        
+        surveyService.getSurvey(EXISTING_ID);
+        
+        assertEquals(existing.getTitle(), surveyCompare.getTitle());
+        assertEquals(existing.getPrefix(), surveyCompare.getPrefix());
+        assertEquals(existing.getDescription(), surveyCompare.getDescription());
+    }
+    
+    
+    
+    
+    
     
     
 }
