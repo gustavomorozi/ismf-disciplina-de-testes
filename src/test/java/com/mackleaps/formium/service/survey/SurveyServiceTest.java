@@ -82,7 +82,7 @@ public class SurveyServiceTest {
         surveyService.deleteSurvey(NOT_EXISTING_SURVEY_ID);
     }
       
-  
+ /* Teste de adição de formulário*/
     @Test
     public void shouldAddSurvey() {
         
